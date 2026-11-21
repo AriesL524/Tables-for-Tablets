@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#fbf5e8" />
+  <title>Johnny Builds to Mars</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell" aria-label="Johnny Builds to Mars interactive storybook">
+    <header class="topbar">
+      <button class="brand" id="homeButton" aria-label="Return to the cover">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span>Parker <i>&amp;</i> Pine</span>
+      </button>
+      <div class="book-title">Johnny Builds to Mars</div>
+      <div class="page-count" aria-live="polite"><span id="pageNumber">01</span> / 05</div>
+    </header>
+
+    <section class="book" id="book" aria-live="polite">
+      <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+      <article class="story-page page-cover active" data-page="0">
+        <div class="page-copy cover-copy">
+          <p class="eyebrow">A little book about a big idea</p>
+          <h1>Johnny<br /><em>Builds</em><br />to Mars</h1>
+          <p class="lede">One curious kid. One cardboard rocket.<br />One very red planet.</p>
+          <button class="primary-button next-action" data-next="1">Open the workshop <span>→</span></button>
+        </div>
+        <div class="cover-art" aria-hidden="true">
+          <span class="scribble scribble-one">✦</span><span class="scribble scribble-two">✧</span>
+          <div class="sun-stamp">GO<br /><small>J.</small></div>
+          <svg class="cover-rocket" viewBox="0 0 420 520" role="img">
+            <path class="ink" d="M208 48 C292 91 308 210 270 340 L210 443 L150 340 C113 210 129 91 208 48Z" />
+            <path class="paper" d="M208 65 C273 103 284 211 252 320 L208 399 L164 320 C132 211 143 103 208 65Z" />
+            <path class="ink" d="M151 286 L85 321 L125 374 L178 342 M266 286 L331 321 L291 374 L239 342" />
+            <path class="flame" d="M178 385 C179 439 197 466 208 485 C222 463 241 436 238 385 C223 405 191 405 178 385Z" />
+            <circle class="window" cx="208" cy="189" r="45" />
+            <circle class="window-shine" cx="193" cy="173" r="12" />
+            <path class="panel-line" d="M163 269 Q208 288 253 269" />
+            <text class="rocket-letter" x="208" y="328" text-anchor="middle">J</text>
+          </svg>
+          <div class="cover-ground"></div>
+          <div class="cover-badge">tap the arrow<br />to begin</div>
+        </div>
+      </article>
+
+      <article class="story-page page-workshop" data-page="1" hidden>
+        <div class="page-copy">
+          <p class="eyebrow">Page one · The workshop</p>
+          <h2>Every great trip<br />starts with a <em>tap.</em></h2>
+          <p class="body-copy">Johnny found three things in the shed: a box, a button, and a very good idea.</p>
+          <p class="hint"><span class="hint-dot"></span> Tap the tools to wake them up.</p>
+          <div class="maker-panel" aria-label="Make your mission">
+            <div class="maker-row maker-name-row"><label for="nameInput">Name it</label><select id="nameType" aria-label="What are you naming?"><option value="hero">hero</option><option value="pet">pet</option><option value="rocket">rocket</option></select><input id="nameInput" type="text" maxlength="18" value="Johnny" aria-label="Name your hero, pet, or rocket" /></div>
+            <div class="maker-row"><span>Design it</span><div class="swatches" role="group" aria-label="Choose a design color"><button class="swatch swatch-coral selected" data-color="#e95743" aria-label="Coral" type="button"></button><button class="swatch swatch-blue" data-color="#4aa7aa" aria-label="Blue" type="button"></button><button class="swatch swatch-yellow" data-color="#e7a900" aria-label="Yellow" type="button"></button><button class="swatch swatch-green" data-color="#4e8f5a" aria-label="Green" type="button"></button></div></div>
+            <div class="maker-row"><span>Pack it</span><div class="pack-options"><button class="pack-item" data-pack="map" type="button">map</button><button class="pack-item" data-pack="snacks" type="button">snacks</button><button class="pack-item" data-pack="buddy" type="button">buddy</button></div></div>
+            <div class="maker-row draw-row"><label for="drawCanvas">Draw it</label><canvas id="drawCanvas" width="180" height="70" aria-label="Draw a character or object"></canvas><button class="clear-maker" id="clearMaker" type="button">clear</button></div>
+          </div>
+        </div>
+        <div class="workshop-scene interactive-scene" id="workshopScene">
+          <div class="pegboard"></div>
+          <div class="tool tool-hammer" data-tool="hammer" tabindex="0" role="button" aria-label="Tap the hammer">🔨<span>bonk!</span></div>
+          <div class="tool tool-tape" data-tool="tape" tabindex="0" role="button" aria-label="Tap the tape">◉<span>roll!</span></div>
+          <div class="tool tool-star" data-tool="star" tabindex="0" role="button" aria-label="Tap the star sticker">★<span>shine!</span></div>
+          <div class="box-stack"><span></span><span></span><span></span><b>ROCKET<br />PARTS</b></div>
+          <div class="speech-bubble" id="workshopBubble">Psst!<br /><strong>let's build.</strong></div>
+          <div class="floor-line"></div>
+        </div>
+      </article>
+
+      <article class="story-page page-launch" data-page="2" hidden>
+        <div class="page-copy">
+          <p class="eyebrow">Page two · The launch pad</p>
+          <h2>Push, pull, <em>whoosh!</em></h2>
+          <p class="body-copy">The rocket was ready. Johnny gave it a nudge toward the stars.</p>
+          <p class="hint"><span class="hint-dot"></span> Drag Johnny to the launch circle.</p>
+        </div>
+        <div class="launch-scene interactive-scene" id="launchScene">
+          <div class="cloud cloud-a"></div><div class="cloud cloud-b"></div>
+          <div class="launch-stars">✦　·　✧　·　✦<br /><small>·　✦　·</small></div>
+          <div class="launch-circle" id="launchTarget"><span>LAND<br />HERE</span></div>
+          <div class="drag-character" id="dragJohnny" tabindex="0" role="button" aria-label="Drag Johnny to the launch circle">
+            <div class="character-head"><i></i><i></i><b></b></div><div class="character-body"></div><div class="character-feet"></div>
+            <span class="drag-label">drag me!</span>
+          </div>
+          <div class="launch-message" id="launchMessage">steady... steady...</div>
+        </div>
+      </article>
+
+      <article class="story-page page-moon" data-page="3" hidden>
+        <div class="page-copy">
+          <p class="eyebrow">Page three · Up above</p>
+          <h2>The sky is a<br /><em>blank page.</em></h2>
+          <p class="body-copy">Johnny drew a path between the stars. Can you make one too?</p>
+          <p class="hint"><span class="hint-dot"></span> Draw with your finger or mouse.</p>
+        </div>
+        <div class="moon-scene interactive-scene" id="moonScene">
+          <canvas id="constellationCanvas" aria-label="Drawing area for a constellation"></canvas>
+          <div class="moon-orb"><div class="moon-crater crater-one"></div><div class="moon-crater crater-two"></div><div class="moon-crater crater-three"></div></div>
+          <div class="moon-caption">the long way<br /><em>is the fun way</em></div>
+          <button class="clear-drawing" id="clearDrawing">clear sky</button>
+        </div>
+      </article>
+
+      <article class="story-page page-mars" data-page="4" hidden>
+        <div class="page-copy">
+          <p class="eyebrow">Page four · Mars!</p>
+          <h2>Red planet,<br /><em>here we come.</em></h2>
+          <p class="body-copy">A small hand can build a very big adventure.</p>
+          <p class="hint"><span class="hint-dot"></span> Hold the sun to power the trip home.</p>
+        </div>
+        <div class="mars-scene interactive-scene" id="marsScene">
+          <div class="mars-sun" id="marsSun" tabindex="0" role="button" aria-label="Hold the sun to power the rocket"><span>HOLD</span></div>
+          <div class="charge-status" id="chargeStatus" aria-live="polite"><span class="charge-label">powering up</span><span class="charge-meter"><i id="chargeFill"></i></span></div>
+          <div class="mars-planet"><div class="mars-ridge"></div><div class="mars-rock rock-one"></div><div class="mars-rock rock-two"></div></div>
+          <div class="tiny-rocket" id="tinyRocket">🚀</div>
+          <div class="custom-doodle" id="customDoodle"><span>your drawing</span></div>
+          <div class="mission-card" id="missionCard"><strong id="namedThingLabel">hero</strong> <b id="namedThing">Johnny</b><small id="packedItems">empty pockets</small></div>
+          <div class="design-patch" id="designPatch" aria-label="Your rocket design"></div>
+          <div class="mars-message" id="marsMessage">the stars are waiting...</div>
+          <div class="completion-stamp" id="completionStamp">HOME<br /><small>we did it!</small></div>
+          <button class="reset-rocket" id="resetRocket" type="button">reset rocket ↻</button>
+        </div>
+      </article>
+    </section>
+
+    <footer class="controls">
+      <button class="nav-button prev-button" id="prevButton" aria-label="Previous page" disabled>← <span>back</span></button>
+      <div class="dot-nav" id="dotNav" aria-label="Choose a page"></div>
+      <button class="nav-button next-button" id="nextButton" aria-label="Next page">next <span>→</span></button>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
